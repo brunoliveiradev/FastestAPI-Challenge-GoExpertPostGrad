@@ -19,3 +19,30 @@
 
 # Go workspace file
 go.work
+
+# IDE/Editor folders
+.vscode
+.idea
+
+# Mac OS files
+.DS_Store
+
+# Log files
+*.log
+
+# Test coverage
+coverage.out
+
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Editor-based HTTP Client requests
+/httpRequests/
+
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+# GitHub Copilot persisted chat sessions
+/copilot/chatSessions
