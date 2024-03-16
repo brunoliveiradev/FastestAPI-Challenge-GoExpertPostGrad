@@ -7,6 +7,7 @@ import (
 	"github.com/brunoliveiradev/GoExpertPostGrad-Challenge/internal/address"
 	"github.com/brunoliveiradev/GoExpertPostGrad-Challenge/pkg/model"
 	"github.com/brunoliveiradev/GoExpertPostGrad-Challenge/util"
+	"io"
 	"log"
 	"net/http"
 )
@@ -63,13 +64,20 @@ func (vc *Client) GetAddress(ctx context.Context, cep string) (*address.Response
 		return nil, &util.CustomError{Status: resp.StatusCode, Message: "error on request to viaCep API"}
 	}
 
-	var viaCEP viaCep
-	err = json.NewDecoder(resp.Body).Decode(&viaCEP)
+	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		err = json.NewDecoder(resp.Body).Decode(&viaCepResponseErrorNotFound{})
-		if err == nil {
-			return nil, &util.CustomError{Status: http.StatusNotFound, Message: "CEP not found on viaCep API!"}
-		}
+		log.Println("[ERROR] Reading response body failed:", err)
+		return nil, err
+	}
+
+	var errorResponse viaCepResponseErrorNotFound
+	if err := json.Unmarshal(bodyBytes, &errorResponse); err == nil && errorResponse.Erro {
+		return nil, &util.CustomError{Status: http.StatusNotFound, Message: "CEP not found on viaCep API!"}
+	}
+
+	var viaCEP viaCep
+	if err := json.Unmarshal(bodyBytes, &viaCEP); err != nil {
+		log.Println("[ERROR] Decoding viaCep response failed:", err)
 		return nil, err
 	}
 
