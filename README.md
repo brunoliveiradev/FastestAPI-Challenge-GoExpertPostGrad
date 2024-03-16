@@ -28,7 +28,7 @@ In this challenge, you will use what we have learned about Multithreading and AP
 
    **Example using `curl`**:
    ```sh
-   curl http://localhost:8080/api/cep/01153000
+   curl http://localhost:8080/api/cep/01001000
     ```
 5. The result will be displayed in the terminal, showing the address data and which API sent it.
 
@@ -64,7 +64,7 @@ Neste desafio, você usará o que aprendemos sobre Multithreading e APIs para bu
 
    **Exemplo usando `curl`**:
    ```sh
-   curl http://localhost:8080/api/cep/01153000
+   curl http://localhost:8080/api/cep/01001000
     ```
 5. O resultado será exibido no terminal, mostrando os dados do endereço e qual API o enviou.
 
