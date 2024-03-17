@@ -6,6 +6,8 @@ import (
 	"net/http"
 )
 
+// Response is the data structure that represents an address response.
+// @Description Data structure representing an address response.
 type Response struct {
 	Source  string         `json:"source"`
 	Address *model.Address `json:"address"`

@@ -27,6 +27,19 @@ func NewAddressHandler(bc *brasilapi.Client, vc *viacep.Client) *AddressHandler 
 	}
 }
 
+// GetCepHandler godoc
+// @Summary Get address details
+// @Description Retrieves address details for a given CEP (ZIP code) from multiple sources, returning the fastest response.
+// @Tags address
+// @Accept json
+// @Produce json
+// @Param cep path string true "CEP (ZIP Code)"
+// @Success 200 {object} address.Response "A successful response includes the source of the data and the address details."
+// @Failure 400 {string} string "Invalid CEP format"
+// @Failure 404 {string} string "CEP not found"
+// @Failure 408 {string} string "Request Timeout - the service did not respond within the expected timeframe"
+// @Failure 500 {string} string "Internal Server Error - unexpected error in processing the CEP"
+// @Router /api/cep/{cep} [get]
 func (h *AddressHandler) GetCepHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	cep := vars["cep"] // Get the CEP from the URL path
