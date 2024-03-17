@@ -1,5 +1,7 @@
 # GoExpertPostGrad-Challenge
-Repository for GoExpertPostGrad-challenge: A curated collection of technical challenges from the Postgraduate program, focused on advanced Go programming concepts. Here, you'll find exercises and solutions.
+
+Repository for GoExpertPostGrad-challenge: A curated collection of technical challenges from the Postgraduate program,
+focused on advanced Go programming concepts. Here, you'll find exercises and solutions.
 
 # Fastest API Response Challenge
 
@@ -7,7 +9,8 @@ Repository for GoExpertPostGrad-challenge: A curated collection of technical cha
 
 ## Challenge Description
 
-In this challenge, you will use what we have learned about Multithreading and APIs to fetch the fastest result between two distinct APIs. The requests will be made simultaneously to the following APIs:
+In this challenge, you will use what we have learned about Multithreading and APIs to fetch the fastest result between
+two distinct APIs. The requests will be made simultaneously to the following APIs:
 
 - `https://brasilapi.com.br/api/cep/v1/{cep}`
 - `http://viacep.com.br/ws/{cep}/json/`
@@ -22,21 +25,28 @@ In this challenge, you will use what we have learned about Multithreading and AP
 
 1. Clone this repository.
 2. Navigate to the project directory.
-3. Run the command `go run main.go` inside the '`src/cmd`' folder to start the local server. This command compiles and executes your Go code that initiates the HTTP server, typically configured to listen on port `8080`.
-4. **Make a Request**:
-    - To request address information using a CEP, use a browser, `curl`, or any HTTP client, pointing to `http://localhost:8080/api/cep/{CEP_HERE}`, replacing `{CEP_HERE}` with the desired CEP.
+3. Run `go mod tidy` to ensure all dependencies are properly installed.
+4. Start the local server by running `go run ./cmd/api/main.go`. This will start the server on port `8080`.
+5. **Making a Request**:
+    - To request address information using a CEP, use a browser, `curl`, or any HTTP client, pointing
+      to `http://localhost:8080/api/cep/{CEP_HERE}`, replacing `{CEP_HERE}` with the desired CEP.
 
    **Example using `curl`**:
    ```sh
    curl http://localhost:8080/api/cep/01001000
     ```
-5. The result will be displayed in the terminal, showing the address data and which API sent it.
+6. The result will be displayed in the terminal, showing the address data and which API sent it.
+7. The field `source` will indicate which API sent the response.
 
-Please ensure your server is running if you're testing this locally, or replace `./api/cep/` with the appropriate command or URL prefix if you're making requests to a deployed API.
+## Accessing Swagger Documentation
+
+To access the Swagger-generated API documentation, navigate to http://localhost:8080/swagger/ after starting the server.
+This will provide an interactive UI where you can view and test the API endpoint.
 
 ## Contributing
 
-We welcome contributions! Please open an issue or submit a pull request for any improvements or additional features you would like to add.
+We welcome contributions! Please open an issue or submit a pull request for any improvements or additional features you
+would like to add.
 
 ---
 
@@ -44,7 +54,8 @@ We welcome contributions! Please open an issue or submit a pull request for any 
 
 ## Descrição do Desafio
 
-Neste desafio, você usará o que aprendemos sobre Multithreading e APIs para buscar o resultado mais rápido entre duas APIs distintas. As requisições serão feitas simultaneamente para as seguintes APIs:
+Neste desafio, você usará o que aprendemos sobre Multithreading e APIs para buscar o resultado mais rápido entre duas
+APIs distintas. As requisições serão feitas simultaneamente para as seguintes APIs:
 
 - `https://brasilapi.com.br/api/cep/v1/{cep}`
 - `http://viacep.com.br/ws/{cep}/json/`
@@ -59,17 +70,24 @@ Neste desafio, você usará o que aprendemos sobre Multithreading e APIs para bu
 
 1. Clone este repositório.
 2. Navegue até o diretório do projeto.
-3. Execute o comando `go run main.go` dentro do diretorio '`src/cmd`'. Este comando compila e executa o seu código Go que inicia o servidor HTTP, tipicamente configurado para escutar na porta `8080`.
-4. Para solicitar informações de endereço usando um CEP, utilize um navegador, curl ou qualquer cliente HTTP, apontando para http://localhost:8080/api/cep/{CEP_AQUI}, substituindo {CEP_AQUI} pelo CEP desejado.
+3. Execute `go mod tidy` para garantir que todas as dependências estejam devidamente instaladas.
+4. Execute o comando `go run main.go` dentro do diretorio '`src/cmd/api`'. Este comando compila e executa o seu código
+   Go que inicia o servidor HTTP, tipicamente configurado para escutar na porta `8080`.
+5. Para solicitar informações de endereço usando um CEP, utilize um navegador, curl ou qualquer cliente HTTP, apontando
+   para http://localhost:8080/api/cep/{CEP_AQUI}, substituindo {CEP_AQUI} pelo CEP desejado.
 
    **Exemplo usando `curl`**:
    ```sh
    curl http://localhost:8080/api/cep/01001000
     ```
-5. O resultado será exibido no terminal, mostrando os dados do endereço e qual API o enviou.
+6. O resultado será exibido no terminal, mostrando os dados do endereço e qual API o enviou.
 
-Certifique-se de que seu servidor esteja rodando se você estiver testando isso localmente, ou substitua `./api/cep/` pelo comando apropriado ou prefixo de URL se você estiver fazendo solicitações a uma API implantada.
+## Acessando a Documentação Swagger
+
+Para acessar a documentação da API gerada pelo Swagger, navegue até http://localhost:8080/swagger/index.html após
+iniciar o servidor. Isso proporcionará uma UI interativa onde você pode visualizar e testar os endpoints da API.
 
 ## Contribuindo
 
-Contribuições são bem-vindas! Por favor, abra uma issue ou envie um pull request para quaisquer melhorias ou funcionalidades adicionais que você gostaria de adicionar.
+Contribuições são bem-vindas! Por favor, abra uma issue ou envie um pull request para quaisquer melhorias ou
+funcionalidades adicionais que você gostaria de adicionar.
