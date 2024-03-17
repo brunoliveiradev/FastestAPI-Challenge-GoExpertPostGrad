@@ -1,0 +1,125 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "contact": {
+      "name": "Bruno Oliveira",
+      "x-github": "brunoliveiradev"
+    },
+    "version": "v1.0.0",
+    "title": "GoExpertPostGrad-Challenge",
+    "description": "This is a simple API to retrieve address details for a given CEP (ZIP code) from multiple sources, returning the fastest response."
+  },
+  "paths": {
+    "/api/cep/{cep}": {
+      "get": {
+        "description": "Retrieves address details for a given CEP (ZIP code) from multiple sources, returning the fastest response.",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "address"
+        ],
+        "summary": "Get address details",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "CEP (ZIP Code)",
+            "name": "cep",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A successful response includes the source of the data and the address details.",
+            "schema": {
+              "$ref": "#/definitions/address.Response"
+            }
+          },
+          "400": {
+            "description": "Invalid CEP format",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "CEP not found",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "408": {
+            "description": "Request Timeout - the service did not respond within the expected timeframe",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error - unexpected error in processing the CEP",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "address.Response": {
+      "description": "Data structure representing an address response.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/model.Address"
+        },
+        "error": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        }
+      }
+    },
+    "model.Address": {
+      "type": "object",
+      "properties": {
+        "additional_details": {
+          "type": "string"
+        },
+        "cep": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "ddd": {
+          "type": "string"
+        },
+        "gia": {
+          "type": "string"
+        },
+        "ibge": {
+          "type": "string"
+        },
+        "neighborhood": {
+          "type": "string"
+        },
+        "service": {
+          "type": "string"
+        },
+        "siafi": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "street": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

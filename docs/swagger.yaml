@@ -1,0 +1,81 @@
+definitions:
+  address.Response:
+    description: Data structure representing an address response.
+    properties:
+      address:
+        $ref: '#/definitions/model.Address'
+      error:
+        type: string
+      source:
+        type: string
+    type: object
+  model.Address:
+    properties:
+      additional_details:
+        type: string
+      cep:
+        type: string
+      city:
+        type: string
+      ddd:
+        type: string
+      gia:
+        type: string
+      ibge:
+        type: string
+      neighborhood:
+        type: string
+      service:
+        type: string
+      siafi:
+        type: string
+      state:
+        type: string
+      street:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /api/cep/{cep}:
+    get:
+      consumes:
+      - application/json
+      description: Retrieves address details for a given CEP (ZIP code) from multiple
+        sources, returning the fastest response.
+      parameters:
+      - description: CEP (ZIP Code)
+        in: path
+        name: cep
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: A successful response includes the source of the data and the
+            address details.
+          schema:
+            $ref: '#/definitions/address.Response'
+        "400":
+          description: Invalid CEP format
+          schema:
+            type: string
+        "404":
+          description: CEP not found
+          schema:
+            type: string
+        "408":
+          description: Request Timeout - the service did not respond within the expected
+            timeframe
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error - unexpected error in processing the
+            CEP
+          schema:
+            type: string
+      summary: Get address details
+      tags:
+      - address
+swagger: "2.0"
