@@ -7,6 +7,7 @@ import (
 	"github.com/brunoliveiradev/GoExpertPostGrad-Challenge/internal/address"
 	"github.com/brunoliveiradev/GoExpertPostGrad-Challenge/pkg/model"
 	"github.com/brunoliveiradev/GoExpertPostGrad-Challenge/util"
+	"log"
 	"net/http"
 )
 
@@ -32,6 +33,7 @@ func NewClient(httpClient *http.Client) *Client {
 	}
 }
 
+// GetAddress make a request to BrasilAPI  API and returns the address.
 func (bc *Client) GetAddress(ctx context.Context, cep string) (*address.Response, error) {
 	url := fmt.Sprintf("%s%s", bc.BaseURL, cep)
 
@@ -50,6 +52,7 @@ func (bc *Client) GetAddress(ctx context.Context, cep string) (*address.Response
 		if resp.StatusCode == http.StatusNotFound {
 			return nil, &util.CustomError{Status: http.StatusNotFound, Message: "CEP not found on BrasilAPI!"}
 		}
+		log.Println("[DEBUG] error on request to BrasilAPI: status code", resp.StatusCode)
 		return nil, &util.CustomError{Status: resp.StatusCode, Message: "error on request to BrasilAPI"}
 	}
 

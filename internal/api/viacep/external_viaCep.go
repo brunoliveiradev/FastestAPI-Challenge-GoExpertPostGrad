@@ -51,22 +51,19 @@ func (vc *Client) GetAddress(ctx context.Context, cep string) (*address.Response
 		return nil, err
 	}
 
-	log.Println("[INFO] Request to viaCep API: ", url)
 	resp, err := vc.HTTPClient.Do(req)
 	if err != nil {
-		log.Println("[ERROR] Request to viaCep API failed:", err)
 		return nil, err
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		log.Println("[ERROR] error on request to viaCep: status code", resp.StatusCode)
+		log.Println("[DEBUG] error on request to viaCep: status code", resp.StatusCode)
 		return nil, &util.CustomError{Status: resp.StatusCode, Message: "error on request to viaCep API"}
 	}
 
 	bodyBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
-		log.Println("[ERROR] Reading response body failed:", err)
 		return nil, err
 	}
 
@@ -77,7 +74,6 @@ func (vc *Client) GetAddress(ctx context.Context, cep string) (*address.Response
 
 	var viaCEP viaCep
 	if err := json.Unmarshal(bodyBytes, &viaCEP); err != nil {
-		log.Println("[ERROR] Decoding viaCep response failed:", err)
 		return nil, err
 	}
 
