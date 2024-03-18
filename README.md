@@ -18,6 +18,10 @@ two distinct APIs. The requests will be made simultaneously to the following API
 - The result should be displayed on the command line with the address data, as well as which API sent it.
 - Limit the response time to 1 second. Otherwise, a timeout error should be displayed.
 
+## Tecnologies
+
+- [Go](https://golang.org/) (Golang)
+
 ## How to Run
 
 1. Clone this repository.
@@ -45,6 +49,16 @@ This will provide an interactive UI where you can view and test the API endpoint
 We welcome contributions! Please open an issue or submit a pull request for any improvements or additional features you
 would like to add.
 
+## :memo: License
+
+This project is under the MIT license. See the [LICENSE](LICENSE) file for more details.
+
+---
+
+Code made with ♥ by Bruno Oliveira! [LinkedIn](https://www.linkedin.com/in/brunoliveiradev/). :blue_heart:
+
+<br>
+
 ---
 
 # Desafio da Resposta Mais Rápida de API
@@ -56,6 +70,10 @@ APIs distintas. As requisições serão feitas simultaneamente para as seguintes
 
 - `https://brasilapi.com.br/api/cep/v1/{cep}`
 - `http://viacep.com.br/ws/{cep}/json/`
+
+## Tecnologias
+
+- [Go](https://golang.org/) (Golang)
 
 ## Requisitos
 
@@ -88,3 +106,13 @@ iniciar o servidor. Isso proporcionará uma UI interativa onde você pode visual
 
 Contribuições são bem-vindas! Por favor, abra uma issue ou envie um pull request para quaisquer melhorias ou
 funcionalidades adicionais que você gostaria de adicionar.
+
+## :memo: Licença
+
+Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+Códigos feitos com ♥ by Bruno Oliveira! [LinkedIn](https://www.linkedin.com/in/brunoliveiradev/). :blue_heart:
+
+<br>
